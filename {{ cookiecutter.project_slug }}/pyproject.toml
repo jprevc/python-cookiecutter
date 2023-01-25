@@ -1,0 +1,43 @@
+[build-system]
+requires = [ "setuptools", "setuptools-scm",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "1.0.0"
+description = "{{ cookiecutter.project_short_description }}"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = [ ]
+classifiers = [ "Programming Language :: Python :: 3",]
+dependencies = [ ]
+[[project.authors]]
+name = "Jost Prevc"
+email = "jost.prevc@gmail.com"
+
+[mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+dev = [ "pytest", "pylint", "pre-commit", "black[d]", "mypy", "tox", ]
+test = [ "pytest",]
+
+[project.scripts]
+{{ project_slug }} = "{{ cookiecutter.project_slug }}.__main__:main"
+
+[tool.setuptools]
+packages = [ "{{ cookiecutter.project_slug }}",]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 120
