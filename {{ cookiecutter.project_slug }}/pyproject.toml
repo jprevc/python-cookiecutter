@@ -3,7 +3,7 @@ requires = [ "setuptools", "setuptools-scm",]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "{{ cookiecutter.project_name }}"
+name = "{{ cookiecutter.project_slug }}"
 version = "1.0.0"
 description = "{{ cookiecutter.project_short_description }}"
 readme = "README.md"
@@ -31,10 +31,7 @@ dev = [ "pytest", "pylint", "pre-commit", "black[d]", "mypy", "tox", ]
 test = [ "pytest",]
 
 [project.scripts]
-{{ project_slug }} = "{{ cookiecutter.project_slug }}.__main__:main"
-
-[tool.setuptools]
-packages = [ "{{ cookiecutter.project_slug }}",]
+{{ cookiecutter.project_slug }} = "{{ cookiecutter.project_slug }}.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

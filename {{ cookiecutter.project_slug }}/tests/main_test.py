@@ -1,8 +1,17 @@
-from {{ cookiecutter.project.slug }} import _main
+import pytest
+
+from {{ cookiecutter.project_slug }}.__main__ import main
+
+
+def test_main_no_arguments_returns_zero():
+    assert main(()) == 0
+
 
 def test_main_basic(capsys):
-    _main.main(())
+    with pytest.raises(SystemExit):
+        main(("--help",))
+
     out, err = capsys.readouterr()
 
-    assert {{ cookiecutter.project_slug }} in out
-    assert {{ cookiecutter.project_short_description }} in out
+    assert err == ""
+    assert "{{ cookiecutter.project_short_description }}" in out
